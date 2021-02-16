@@ -33,17 +33,16 @@ This html file contains the results of the last word found in the entire test...
 - Custom generic return ```Result``` type so as to minimise coding with exception outcomes and prevents later coding where checking for nulls would have been done
 - Generic lists, standard arrays and Enumerables.
 - LINQ for various mapping requirements
-- Classes as well as structs (structs and primitive data types so as to try to remain on the stack and at least in L1-cache if possble)
+- Classes, Interface, structs (structs and primitive data types so as to try to remain on the stack or at least in L1-cache)
 - Custom Exception
 - Recursion
 - Basic text file manipulation (read, write, delete)
 - Output last word found to simple html file
 - Zero bytes of code was copy-pasted from anywhere
 - Coded in a Windows 10 Pro virtual machine
+- I forgot to add a Logger using Dependancy Injection
 
-***I did think of multi-threading the Recursion too but it was quick enough - perhaps I should have show have (PS:not sure the TPL would have been the fastest, would have benchmarked it first)***
-
-***With an already quick speed additional threading could suffer due to thread context switches too***
+***I did think of multi-threading the recursion too but it was quick enough - perhaps I should have (PS: not sure the TPL would have been the fastest, would have benchmarked it first)***
 
 
 
