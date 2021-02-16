@@ -41,7 +41,9 @@ This html file contains the results of the last word found in the entire test...
 - Zero bytes of code was copy-pasted from anywhere
 - Coded in a Windows 10 Pro virtual machine
 
-***I did think of multi-threading the Recursion too but it was quick enoug - perhaps I should have show have (PS:not sure the TPL would have been the fastest, would have benchmarked it first)***
+***I did think of multi-threading the Recursion too but it was quick enough - perhaps I should have show have (PS:not sure the TPL would have been the fastest, would have benchmarked it first)***
+
+***I an already quick speed additional threading could suffer due to thread context switches too***
 
 
 
