@@ -38,5 +38,6 @@ This html file contains the results of the last word found in the entire test...
 - Recursion
 - Basic text file manipulation (read, write, delete)
 - Output last word found to simple html file
+- Zero bytes of code was copy-pasted from anywhere
 
 
