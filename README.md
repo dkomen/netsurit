@@ -9,7 +9,7 @@ Simply open the NetsuritFindWords.sln in Visual Studio 2019
 
 ## Building the solution
 
-Build with Ctrl+B
+Build with Ctrl+B (first selecting either Debug or Release mode)
 
 ## Running the app
 
@@ -24,15 +24,16 @@ The following example is assuming the words.txt file and the executable binary a
 
 ```NetsuritFindWords.exe words.txt```
 
-After successfull execution a file named ```results.html``` will be created in your currently active directory which you can open using your browser.
+After successfull execution a file named ```results.html``` will be created in your currently active directory (propably: [Solution Folder]\NetsuritFindWords\bin\[Debug\Release]\netcoreapp3.1) which you can open using your browser.
 
 This html file contains the results of the last word found in the entire test... but all the results are stored in an array and can all be rendered to html if needed.
 
 ## Some coding features used
 
 - Custom generic return ```Result``` type so as to minimise coding with exception outcomes and prevents later coding where checking for nulls would have been done
-- LINQ for sorting and mappig
-- Classes as well as structs (structs and primitive data types so as to try to remain on the stack and in L1-cache if possble)
+- Generic lists, standard arrays and Enumerables.
+- LINQ for various mapping requirements
+- Classes as well as structs (structs and primitive data types so as to try to remain on the stack and at least in L1-cache if possble)
 - Custom Exception
 - Recursion
 - Basic text file manipulation (read, write, delete)
