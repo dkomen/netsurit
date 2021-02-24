@@ -14,11 +14,24 @@ namespace Netsurit.Data
     {
         public byte Character { get; set; } //Dean: change set to private
         public bool AlreadyUsed { get; set; }
+        public int OriginalIndex { get; set; }
+
+        public int NextCharacterSearchIndex { get; set; }
 
         public MatrixCharacter(byte character)
         {
             this.Character = character;
             this.AlreadyUsed = false;
+            this.NextCharacterSearchIndex = 0;
+            this.OriginalIndex = 0;
+        }
+
+        public MatrixCharacter(byte character, int nextCharacterSearchIndex, int originalIndex)
+        {
+            this.Character = character;
+            this.AlreadyUsed = false;
+            this.NextCharacterSearchIndex = nextCharacterSearchIndex;
+            this.OriginalIndex = originalIndex;
         }
 
         /// <summary>
@@ -29,6 +42,8 @@ namespace Netsurit.Data
         {
             MatrixCharacter clonedCharacter = new MatrixCharacter(this.Character);
             clonedCharacter.AlreadyUsed = this.AlreadyUsed;
+            clonedCharacter.NextCharacterSearchIndex = this.NextCharacterSearchIndex;
+            clonedCharacter.OriginalIndex = this.OriginalIndex;
 
             return clonedCharacter;
         }

@@ -34,36 +34,38 @@ namespace Netsurit.Data
         /// Print a specific matrix to a file in simple html formatting
         /// </summary>
         /// <param name="indexToDisplay"></param>
-        public Result<String> Display(int indexToDisplay, String htmlFileName) //So we should also check that the index to display is a valid index and the html file is a valid path
+        public Result<String> Display(String htmlFileName) //So we should also check that the index to display is a valid index and the html file is a valid path
         {
-            int indexToDisplayWithOffset = indexToDisplay-1;
-            MatrixDataSet matrixToUse = this.FoundMatrixes[indexToDisplayWithOffset].Item1;
-            String wordFound = this.FoundMatrixes[indexToDisplayWithOffset].Item2;
-
             Result<String> deleteResult = Files.DeleteFile(htmlFileName);
             if (deleteResult.IsOk)
             {
-                int currentIndex = 0;
                 System.Text.StringBuilder html = new System.Text.StringBuilder();
-                html.Append("Word: " + wordFound + "<br /><table style='color: blue'>");
-                for (int row = 0; row < Math.Sqrt(matrixToUse.RandomMatrix.Length); row++)//Math.Sqrt is assuming we are always working with a perfect square
+                for (int indexToDisplay = 0; indexToDisplay < this.FoundMatrixes.Count; indexToDisplay++)
                 {
-                    html.Append("<tr>");
-                    for (int column = 0; column < Math.Sqrt(matrixToUse.RandomMatrix.Length); column++)//Math.Sqrt is assuming we are always working with a perfect square
+                    MatrixDataSet matrixToUse = this.FoundMatrixes[indexToDisplay].Item1;
+                    String wordFound = this.FoundMatrixes[indexToDisplay].Item2;
+                    
+                    int currentIndex = 0;
+                    html.Append("<div style='float: left; padding: 8px'><b>" + wordFound + "</b><br /><table style='color: blue; border: 1px solid #333'>");
+                    for (int row = 0; row < Math.Sqrt(matrixToUse.RandomMatrix.Length); row++)//Math.Sqrt is assuming we are always working with a perfect square
                     {
-                        String color = "Green";
-                        if (matrixToUse.RandomMatrix[currentIndex].AlreadyUsed)
+                        html.Append("<tr>");
+                        for (int column = 0; column < Math.Sqrt(matrixToUse.RandomMatrix.Length); column++)//Math.Sqrt is assuming we are always working with a perfect square
                         {
-                            color = "Red";
+                            String color = "Green";
+                            if (matrixToUse.RandomMatrix[currentIndex].AlreadyUsed == true)
+                            {
+                                color = "Red";
+                            }
+
+                            //html.Append("<td style='width: 12px; color: " + color + "'>" + (char)(matrixToUse.RandomMatrix[currentIndex].Character - 32) + "</td>");
+                            html.Append("<td style='width: 12px; color: " + color + "'>" + (char)(matrixToUse.RandomMatrix[currentIndex].Character) + "</td>");
+                            currentIndex += 1;
                         }
-
-                        html.Append("<td style='width: 12px; color: " + color + "'>" + (char)(matrixToUse.RandomMatrix[currentIndex].Character-32) + "</td>");
-                        currentIndex += 1;
+                        html.Append("</tr>");
                     }
-                    html.Append("</tr>");
+                    html.Append("</table></div>");
                 }
-                html.Append("</table>");
-
                 return Files.SaveStringToFile(htmlFileName, html.ToString());
             }
             else

@@ -2,7 +2,7 @@
   "profiles": {
     "NetsuritFindWords": {
       "commandName": "Project",
-      "commandLineArgs": "C:\\Users\\Jerry\\source\\repos\\NetsuritFindWords\\NetsuritFindWords\\bin\\Debug\\netcoreapp3.1\\words.txt"
+      "commandLineArgs": "C:\\Users\\Jerry\\source\\repos\\Netsurit\\words.txt"
     }
   }
 }
